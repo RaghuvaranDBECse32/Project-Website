@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSRE Design and Research</title>
+
+    <!-- Embedded CSS -->
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212; /* Dark background */
+            color: #ffffff; /* White text */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #1c1c1c; /* Dark header */
+            width: 100%;
+        }
+
+        .title {
+            font-family: 'Serif', serif;
+            font-size: 36px;
+            color: #ffdd00; /* Hotstar-like color */
+            margin: 0;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #ffffff;
+        }
+
+        .portfolio {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            width: 90%; /* Responsive width */
+            max-width: 1200px; /* Max width for larger screens */
+        }
+
+        .portfolio ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .portfolio li {
+            background: #2c2c2c; /* Card background */
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            transition: transform 0.3s, background-color 0.3s;
+            overflow: hidden; /* Prevent overflow of content */
+        }
+
+        .portfolio li:hover {
+            transform: scale(1.05);
+            background-color: #3a3a3a; /* Card hover color */
+        }
+
+        #3d-canvas {
+            width: 100%;
+            height: 400px;
+            background: rgba(0, 0, 0, 0.7);
+            margin-top: 20px;
+        }
+
+        footer {
+            text-align: center;
+            color: #ffffff;
+            padding: 20px;
+            background-color: #1c1c1c;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Media Query for Mobile Devices */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px;
+            }
+
+            .title {
+                font-size: 28px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+
+            .portfolio {
+                margin-top: 10px;
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust column size for mobile */
+            }
+
+            #3d-canvas {
+                height: 300px; /* Reduced height for mobile */
+            }
+        }
+
+        /* Media Query for Very Small Devices (Phone Landscape and smaller) */
+        @media (max-width: 480px) {
+            .title {
+                font-size: 24px;
+            }
+
+            .subtitle {
+                font-size: 14px;
+            }
+
+            #3d-canvas {
+                height: 200px; /* Further reduced height */
+            }
+
+            footer {
+                font-size: 14px; /* Smaller footer text */
+            }
+        }
+    </style>
+
+    <!-- Add 3.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1 class="title">OSRE Design and Research</h1>
+        <p class="subtitle">Research, Innovation, and Coding at its best!</p>
+    </header>
+
+    <section class="content">
+        <div class="portfolio">
+            <h2 style="grid-column: span 2; text-align: center;">Portfolio Links</h2>
+            <ul>
+                <li><a href="https://www.linkedin.com/in/your-linkedin" target="_blank" style="color: #ffdd00; text-decoration: none;">LinkedIn</a></li>
+                <li><a href="https://github.com/RaghuvaranDBECse32" target="_blank" style="color: #ffdd00; text-decoration: none;">GitHub</a></li>
+            </ul>
+        </div>
+        <div id="3d-canvas"></div> <!-- 3D Canvas for three.js -->
+    </section>
+
+    <footer>
+        <p>© 2024 OSRE Design and Research</p>
+    </footer>
+
+    <!-- Embedded JavaScript -->
+    <script>
+        // Three.js basic setup
+        let scene = new THREE.Scene();
+        let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        let renderer = new THREE.WebGLRenderer();
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('3d-canvas').appendChild(renderer.domElement);
+
+        let geometry = new THREE.BoxGeometry();
+        let material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        let cube = new THREE.Mesh(geometry, material);
+
+        scene.add(cube);
+        camera.position.z = 5;
+
+        let animate = function () {
+            requestAnimationFrame(animate);
+
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+
+            renderer.render(scene, camera);
+        };
+
+        animate();
+
+        // Adjust 3D canvas on window resize
+        window.addEventListener('resize', () => {
+            let width = window.innerWidth;
+            let height = window.innerHeight;
+            renderer.setSize(width, height);
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+        });
+    </script>
+
+</body>
+</html>
