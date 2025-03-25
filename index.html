@@ -2,79 +2,181 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raghuvaran Damodaran | Portfolio</title>
     <link rel="icon" href="favicon.png" type="image/x-icon">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #f1f1f1;
+            color: #333;
+            transition: background 0.4s, color 0.4s;
+        }
+
+        .dark-mode {
+            background: #121212;
+            color: #ffffff;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 10%;
+            background: #fff;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .dark-mode .header {
+            background: #1f1f1f;
+        }
+
+        .logo {
+            font-size: 24px;
+            color: #e9534e;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .toggle-btn {
+            cursor: pointer;
+            background: #0078D7;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .home {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px 10%;
+        }
+
+        .home h1 {
+            font-size: 42px;
+            font-weight: 700;
+            color: #0064d7;
+        }
+
+        .dark-mode .home h1 {
+            color: #4da8da;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: #d7008f;
+            border-radius: 30px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #0056a5;
+        }
+
+        .projects {
+            padding: 60px 10%;
+            text-align: center;
+        }
+
+        .project-item {
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #ffffff;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-item:hover {
+            transform: scale(1.05);
+        }
+
+        .dark-mode .project-item {
+            background: #2a2a2a;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #f1f1f1;
+            color: #555;
+        }
+
+        .dark-mode footer {
+            background: #1f1f1f;
+            color: #bbb;
+        }
+    </style>
 </head>
 <body>
     <header class="header">
-        <a href="#" class="logo">My Portfolio</a>
-        <button id="theme-toggle">Toggle Theme</button>
+        <a href="#" class="logo">Raghuvaran's Resumfolio</a>
+        <button class="toggle-btn" onclick="toggleMode()">Toggle Dark/Light</button>
     </header>
 
     <section class="home">
-        <div class="home-content">
-            <h3>Welcome</h3>
-            <h1>Raghuvaran Damodaran</h1>
-            <h3>I am a <span class="multiple-text"></span></h3>
-            <p>Passionate fresher with exposure to full-stack development, cloud computing, and problem-solving. Strong academic background and hands-on experience in Python, Flask, and web development.</p>
-            <a href="resume.pdf" download class="btn">Download My Resume</a>
-
-            <div class="contact-section">
-                <p>Feel free to connect with me:</p>
-                <div class="contact-icons">
-                    <a href="mailto:raghuvarandamodaran2002@gmail.com" target="_blank" title="Email"><i class='bx bx-envelope'></i></a>
-                    <a href="https://www.linkedin.com/in/raghuvaran-damodaran-57b971239" target="_blank" title="LinkedIn"><i class='bx bxl-linkedin'></i></a>
-                    <a href="https://github.com/RaghuvaranDBECse32" target="_blank" title="GitHub"><i class='bx bxl-github'></i></a>
-                </div>
-            </div>
-        </div>
+        <h3>Welcome</h3>
+        <h1>Raghuvaran Damodaran</h1>
+        <h3>I am a <span class="multiple-text"></span></h3>
+        <p>Passionate fresher with exposure to full-stack development, cloud computing, and problem-solving. Strong academic background and hands-on experience in Python, Flask, and web development.</p>
+        <a href="resume.pdf" download class="btn"> My Resume </a>
     </section>
 
-    <section id="projects">
+    <section class="projects">
         <h2>Project Experience</h2>
-        <ul>
-            <li>
-                <h3>IORRERA - NASA Space Apps Challenge 2024</h3>
-                <p>Developed an interactive learning platform on Space Science using web technologies. Selected for Global Judging among 900 teams.</p>
-            </li>
-            <li>
-                <h3>Fresh Guard Thermo Oasis</h3>
-                <p>Optimized post-harvest tomato storage using Peltier devices and sensors. Selected for Level-1 Ideation in Niral Thiruvizha.</p>
-            </li>
-            <li>
-                <h3>CV Builderz</h3>
-                <p>Designed and developed a dynamic resume website with backend integration using PHP and MySQL.</p>
-            </li>
-            <li>
-                <h3>KnowAR</h3>
-                <p>Built an AR-powered educational platform to enhance interactive learning.</p>
-            </li>
-        </ul>
-    </section>
-
-    <section id="skills">
-        <h2>Skills</h2>
-        <p>Python, JavaScript, Flask, Django, OpenCV, MySQL, Firebase, React, CCNA, AWS.</p>
+        <div class="project-item"><h3>IORRERA (Oct 2024 - Nov 2024)</h3><p>Frontend Developer - Interactive learning app for Space Science, selected for NASA Space App Challenge 2024 global judging.</p></div>
+        <div class="project-item"><h3>Fresh Guard Thermo Oasis (Feb 2024 - Sep 2024)</h3><p>Team Member - Optimized post-harvest tomato storage with sensors and Peltier devices.</p></div>
+        <div class="project-item"><h3>Snapshotz Algorithm (Mar 2023 - May 2023)</h3><p>Software Tester - AI-based photo optimization project, showcased at Francis Xavier Engineering College,Tirunelveli.</p></div>
+        <div class="project-item"><h3>CV Builderz (Mar 2023 - May 2023)</h3><p>Web Developer - Built a resume-building web app using PHP & MySQL.</p></div>
+        <div class="project-item"><h3>KnowAR (Jan 2023 - May 2023)</h3><p>Developer - AR-based educational tool for immersive learning</p></div>
+        <div class="project-item"><h3>Indoor Positioning System (Mar 2022 - May 2022)</h3><p>Media Coordinator - Developed ML-based indoor positioning with 3D visualization.</p></div>
+        <div class="project-item"><h3>Mobile Eye Navigation (Mar 2022 - May 2022)</h3><p>Software Documenter - Developed real-time gaze tracking for cursor control.</p></div>
+        <div class="project-item"><h3>Govetechthon - Primary Health Care System (Sep 2021 - Mar 2022)</h3><p>Team Member - Healthcare management system.</p></div>
+        <div class="project-item"><h3>Maison Robtiques (2016)</h3><p>Contestant - Third-place winner in NASA Space Ames Settlement Contest in 2016 in Narayana E-Techno School, Ambattur .</p></div>
     </section>
 
     <footer>
-        <p>Copyright © Raghuvaran Damodaran 2024. All Rights Reserved.</p>
+        Copyright © OSRE Design and Research 2024. All Rights Reserved.
     </footer>
 
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-    <script src="script.js"></script>
     <script>
         var typed = new Typed(".multiple-text", {
-            strings: ["Full Stack Developer", "Cloud Computing Enthusiast", "Software Engineer"],
+            strings: ["Software Developer", "Full Stack Developer", "Cloud Computing", "Python Developer", "Video Editor"],
             typeSpeed: 100,
             backSpeed: 100,
             backDelay: 100,
             loop: true
         });
+
+        function toggleMode() {
+            document.body.classList.toggle("dark-mode");
+        }
     </script>
 </body>
 </html>
